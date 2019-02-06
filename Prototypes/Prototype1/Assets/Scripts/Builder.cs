@@ -12,6 +12,7 @@ public class Builder : MonoBehaviour
     public GameObject UIObjectToHide, binObject, ButtonPrefab, BuildingTabPanel;
     private GameObject placingObject;
     private List<Text> buttonTexts = new List<Text>();
+    private bool CanBeRotated = false;
 
     private void Start()
     {
@@ -37,6 +38,8 @@ public class Builder : MonoBehaviour
             //Spawn prefab
             placingObject = Instantiate(BuildingPrefabs[objectNumber], transform.position, transform.rotation);
 
+            CanBeRotated = placingObject.GetComponent<CanBeRotated>().canBeRotated;
+
             UIObjectToHide.SetActive(false);
             binObject.SetActive(true);
 
@@ -48,6 +51,14 @@ public class Builder : MonoBehaviour
     private void Update()
     {
         if (placingObject == null) { return; }
+
+        if (CanBeRotated)
+        {
+            if (Input.GetButtonDown("Rotate"))
+            {
+                placingObject.transform.rotation = Quaternion.Euler(placingObject.transform.eulerAngles.x, placingObject.transform.eulerAngles.y, placingObject.transform.eulerAngles.z+45);
+            }
+        }
 
         Vector3 MousePos = GetMousePosition();
 

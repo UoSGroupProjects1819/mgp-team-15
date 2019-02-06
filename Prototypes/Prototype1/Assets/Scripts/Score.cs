@@ -9,10 +9,13 @@ public class Score : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        spawnPoint.startPanel.SetActive(true);
-        score.SetActive(true);
+        if (other.tag == "Player")
+        {
+            spawnPoint.startPanel.SetActive(true);
+            score.SetActive(true);
 
-        StartCoroutine("ResetLevel");
+            StartCoroutine("ResetLevel");
+        }
     }
 
     private IEnumerator ResetLevel()
