@@ -82,7 +82,11 @@ public class Builder : MonoBehaviour
 
         Vector3 MousePos = GetMousePosition();
 
-        placingObject.transform.position = MousePos;
+        int x = Mathf.RoundToInt(MousePos.x);
+        int y = Mathf.RoundToInt(MousePos.y);
+        Vector3 CorrectedPosition = new Vector3(x, y,0);
+
+        placingObject.transform.position = CorrectedPosition;
 
         if(Input.GetButtonDown("Fire1"))
         {

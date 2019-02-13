@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\CanBeRotated.cs" />
     <Compile Include="Assets\Scripts\DisableOnStart.cs" />
     <Compile Include="Assets\Scripts\LevelSelect.cs" />
+    <Compile Include="Assets\Scripts\PauseToggle.cs" />
     <Compile Include="Assets\Scripts\PlaceTeleporter.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\ResetLevel.cs" />

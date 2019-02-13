@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SaveGame : MonoBehaviour
 {
     private Builder buildSource;
-
+    public GameObject saveButton;
     string path = "";
     string file = "/LevelSavaData";
 
@@ -120,6 +120,6 @@ public class SaveGame : MonoBehaviour
         buildSource.UpdateBuildingIcons();
 
         f.Close();
-        Destroy(this.gameObject);
+        saveButton.SetActive(true);
     }
 }
