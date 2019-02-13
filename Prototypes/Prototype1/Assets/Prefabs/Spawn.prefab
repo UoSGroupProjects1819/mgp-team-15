@@ -47,3 +47,5 @@ MonoBehaviour:
   Player: {fileID: 8883976329521466074, guid: 3d20a27dff4052248bfaa78840b16aa5, type: 3}
   startPanel: {fileID: 0}
   SpawnedPlayer: {fileID: 0}
+  outOfBounds: {fileID: 0}
+  EndPoint: {fileID: 0}
