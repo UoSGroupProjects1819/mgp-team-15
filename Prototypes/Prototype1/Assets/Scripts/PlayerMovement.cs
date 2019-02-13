@@ -6,7 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public Transform footPosition;
     public string LastName = "";
+    private ConstantForce2D myForce;
 
+    private void Start()
+    {
+        myForce = GetComponent<ConstantForce2D>();
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -19,12 +24,12 @@ public class PlayerMovement : MonoBehaviour
             if (collision.transform.position.y > footPosition.position.y)
             {
                 //slide up
-                GetComponent<ConstantForce2D>().relativeForce = new Vector2(GetComponent<ConstantForce2D>().relativeForce.x, GetComponent<ConstantForce2D>().relativeForce.x);
+                myForce.relativeForce = new Vector2(myForce.relativeForce.x, myForce.relativeForce.x);
             }
             else
             {
                 //slide down
-                GetComponent<ConstantForce2D>().relativeForce = new Vector2(GetComponent<ConstantForce2D>().relativeForce.x, -GetComponent<ConstantForce2D>().relativeForce.x);
+                myForce.relativeForce = new Vector2(myForce.relativeForce.x, -myForce.relativeForce.x);
             }
         }
         else if (collision.transform.tag == "Flip")
@@ -39,6 +44,10 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<Rigidbody2D>().gravityScale = -GetComponent<Rigidbody2D>().gravityScale;
             transform.Rotate(Vector2.left * 180);
         }
+        else if (collision.transform.tag == "Deflective")
+        {
+            myForce.relativeForce = -myForce.relativeForce;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -47,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (LastName == collision.transform.parent.name)
             {
-                GetComponent<ConstantForce2D>().relativeForce = new Vector2(GetComponent<ConstantForce2D>().relativeForce.x, 0);
+                myForce.relativeForce = new Vector2(myForce.relativeForce.x, 0);
                 LastName = "";
             }
         }
