@@ -144,7 +144,7 @@ ConstantForce2D:
   m_GameObject: {fileID: 8883976329521466074}
   m_Enabled: 1
   m_Force: {x: 0, y: 0}
-  m_RelativeForce: {x: 6, y: 0}
+  m_RelativeForce: {x: 6, y: -1}
   m_Torque: 0
 --- !u!114 &7125338904424156490
 MonoBehaviour:
@@ -173,6 +173,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.4, y: 1.87}
+  m_Offset: {x: 0, y: -0.4}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
