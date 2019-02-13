@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4625535698896053789}
   - component: {fileID: 2550044735163260682}
   - component: {fileID: 2550044735163260683}
+  - component: {fileID: 8335377140499082573}
   m_Layer: 0
   m_Name: OutOfBounds
   m_TagString: Untagged
@@ -142,3 +143,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
+--- !u!114 &8335377140499082573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3618627124511401409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64267e14d2804ee4685c251c5bbf8e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

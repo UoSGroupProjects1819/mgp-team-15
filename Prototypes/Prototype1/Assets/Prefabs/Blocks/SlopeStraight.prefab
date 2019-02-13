@@ -56,6 +56,8 @@ GameObject:
   - component: {fileID: 3833719449594148363}
   - component: {fileID: 3485284237223531890}
   - component: {fileID: 4605189671640405923}
+  - component: {fileID: 3781554217908426244}
+  - component: {fileID: 1076282585035859155}
   m_Layer: 0
   m_Name: NormalStraight
   m_TagString: Slope
@@ -72,7 +74,7 @@ Transform:
   m_GameObject: {fileID: 1613212763733256747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.312, y: 0.074, z: 1}
+  m_LocalScale: {x: 0.7650864, y: 0.074, z: 1}
   m_Children: []
   m_Father: {fileID: 3823069445439546061}
   m_RootOrder: 0
@@ -141,3 +143,38 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 5, y: 4.15}
   m_Direction: 1
+--- !u!114 &3781554217908426244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613212763733256747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957a10da1aac2b8448a140c541f06043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCollider: {fileID: 4605189671640405923}
+  myRigid: {fileID: 1076282585035859155}
+--- !u!50 &1076282585035859155
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613212763733256747}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 2
+  m_CollisionDetection: 1
+  m_Constraints: 7

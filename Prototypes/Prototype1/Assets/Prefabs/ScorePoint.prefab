@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3885183471416867072}
   - component: {fileID: 6810739755790113422}
   - component: {fileID: 8901026868837054414}
+  - component: {fileID: 5668480330205152143}
   m_Layer: 0
   m_Name: ScorePoint
   m_TagString: Untagged
@@ -143,3 +144,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 0}
   spawnPoint: {fileID: 0}
+--- !u!114 &5668480330205152143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3808485705097240065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64267e14d2804ee4685c251c5bbf8e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

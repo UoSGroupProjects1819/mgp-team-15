@@ -63,10 +63,16 @@
     <Compile Include="Assets\Scripts\Builder.cs" />
     <Compile Include="Assets\Scripts\ButtonAction.cs" />
     <Compile Include="Assets\Scripts\CanBeRotated.cs" />
+    <Compile Include="Assets\Scripts\DisableOnStart.cs" />
+    <Compile Include="Assets\Scripts\LevelSelect.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\ResetLevel.cs" />
     <Compile Include="Assets\Scripts\Respawn.cs" />
     <Compile Include="Assets\Scripts\SaveGame.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
+    <Compile Include="Assets\Scripts\SetScreenSize.cs" />
     <Compile Include="Assets\Scripts\Spawn.cs" />
+    <Compile Include="Assets\Scripts\ValidateBuild.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/mgp-team-15/Prototypes/Prototype1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

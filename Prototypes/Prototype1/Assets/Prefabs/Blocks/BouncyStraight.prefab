@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 9205372470433603442}
   - component: {fileID: 809405440122289881}
   - component: {fileID: 1578763831069243307}
+  - component: {fileID: 6208305545295081037}
+  - component: {fileID: 1161293069183793850}
   m_Layer: 0
   m_Name: BouncyStraight
   m_TagString: USEROBJECT
@@ -110,3 +112,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBeRotated: 0
+--- !u!114 &6208305545295081037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484464963582861355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957a10da1aac2b8448a140c541f06043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCollider: {fileID: 809405440122289881}
+  myRigid: {fileID: 1161293069183793850}
+--- !u!50 &1161293069183793850
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484464963582861355}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 2
+  m_CollisionDetection: 0
+  m_Constraints: 7

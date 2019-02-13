@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SaveGame : MonoBehaviour
 {
-    public Builder buildSource;
+    private Builder buildSource;
 
     string path = "";
     string file = "/LevelSavaData";
@@ -87,6 +87,7 @@ public class SaveGame : MonoBehaviour
             yield return 1;
         }
 
+        buildSource = GameObject.Find("Builder").GetComponent<Builder>();
         Debug.Log("Level loaded");
 
         int USERCOUNT = int.Parse(f.ReadLine());
@@ -117,8 +118,10 @@ public class SaveGame : MonoBehaviour
                     Debug.Log("Spawn object");
                 }
                 count++;
-            }
+            }            
         }
+
+        buildSource.UpdateBuildingIcons();
 
         f.Close();
         Destroy(this.gameObject);

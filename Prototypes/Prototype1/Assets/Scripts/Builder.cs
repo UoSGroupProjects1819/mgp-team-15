@@ -9,10 +9,13 @@ public class Builder : MonoBehaviour
     public int[] BuildLimitsForLevel;
     public GameObject[] BuildingPrefabs;
 
+    private int rotatecount = 0;
     public GameObject UIObjectToHide, binObject, ButtonPrefab, BuildingTabPanel;
     private GameObject placingObject;
     private List<Text> buttonTexts = new List<Text>();
     private bool CanBeRotated = false;
+
+    public static bool ValidateBuildCount = true;
 
     private void Start()
     {
@@ -37,12 +40,14 @@ public class Builder : MonoBehaviour
         {
             //Spawn prefab
             placingObject = Instantiate(BuildingPrefabs[objectNumber], transform.position, transform.rotation);
-
+            placingObject.name = BuildingPrefabs[objectNumber].name + Random.Range(0, 1000000);
+            placingObject.GetComponentInChildren<ValidateBuild>().ActivateValidator();
+            //TODO DONT HAVE THIS AS THE NAME
             CanBeRotated = placingObject.GetComponent<CanBeRotated>().canBeRotated;
 
             UIObjectToHide.SetActive(false);
             binObject.SetActive(true);
-
+            rotatecount = 0;
             BuildLimitsForLevel[objectNumber]--;
             buttonTexts[objectNumber].text = BuildingPrefabs[objectNumber].name + "\n" + BuildLimitsForLevel[objectNumber] + " Remaining";
         }
@@ -56,7 +61,12 @@ public class Builder : MonoBehaviour
         {
             if (Input.GetButtonDown("Rotate"))
             {
-                placingObject.transform.rotation = Quaternion.Euler(placingObject.transform.eulerAngles.x, placingObject.transform.eulerAngles.y, placingObject.transform.eulerAngles.z+45);
+                int[] options = new int[] { 0, 45, -45 };
+                rotatecount++;
+                if (rotatecount >= options.Length) { rotatecount = 0; }
+
+                placingObject.transform.rotation = Quaternion.Euler(placingObject.transform.eulerAngles.x, placingObject.transform.eulerAngles.y, options[rotatecount]);
+
             }
         }
 
@@ -66,8 +76,12 @@ public class Builder : MonoBehaviour
 
         if(Input.GetAxisRaw("Fire1") > 0)
         {
-            placingObject = null;
-            SwitchMenu();
+            if (ValidateBuildCount)
+            {
+                placingObject.GetComponentInChildren<ValidateBuild>().DisableValidator();
+                placingObject = null;
+                SwitchMenu();
+            }
         }
     }
 
@@ -88,5 +102,16 @@ public class Builder : MonoBehaviour
     {
         binObject.SetActive(false);
         UIObjectToHide.SetActive(true);
+    }
+
+    public void UpdateBuildingIcons()
+    {
+        int count = 0;
+        foreach(int b in BuildLimitsForLevel)
+        {
+            buttonTexts[count].text = BuildingPrefabs[count].name + "\n" + BuildLimitsForLevel[count] + " Remaining";
+            count++;
+        }
+
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Slope
   - USEROBJECT
+  - Flip
   layers:
   - Default
   - TransparentFX

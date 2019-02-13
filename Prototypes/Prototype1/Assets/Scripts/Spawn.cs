@@ -12,7 +12,7 @@ public class Spawn : MonoBehaviour
 
     private bool Lerping = false;
     private Transform camTransform, playerTransform;
-    public GameObject SpawnedPlayer;
+    public GameObject SpawnedPlayer,outOfBounds,EndPoint;
 
     private void Start()
     {
@@ -27,6 +27,9 @@ public class Spawn : MonoBehaviour
 
         startPanel.SetActive(false);
         Lerping = true;
+
+        outOfBounds.SetActive(true);
+        EndPoint.SetActive(true);
     }
 
     private void Update()
