@@ -799,6 +799,27 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 156937139}
+    - target: {fileID: 4722477835264245981, guid: 9d62698757a017a44b3f8b6e82c2003a,
+        type: 3}
+      propertyPath: BuildingPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722477835264245981, guid: 9d62698757a017a44b3f8b6e82c2003a,
+        type: 3}
+      propertyPath: BuildLimitsForLevel.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722477835264245981, guid: 9d62698757a017a44b3f8b6e82c2003a,
+        type: 3}
+      propertyPath: BuildingPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 8660591487808977669, guid: 7393bdd07ee017645b573b8af05fb5ba,
+        type: 3}
+    - target: {fileID: 4722477835264245981, guid: 9d62698757a017a44b3f8b6e82c2003a,
+        type: 3}
+      propertyPath: BuildLimitsForLevel.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d62698757a017a44b3f8b6e82c2003a, type: 3}
 --- !u!61 &4668777601086765193

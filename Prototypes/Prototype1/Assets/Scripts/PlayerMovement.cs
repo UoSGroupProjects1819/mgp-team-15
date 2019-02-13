@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 float yDif = transform.position.y - collision.transform.position.y;
 
-                transform.position = new Vector3(transform.position.x, collision.transform.position.y - yDif + 0.15f, transform.position.z);
+                transform.position = new Vector3(transform.position.x, collision.transform.position.y - yDif + 0.5f, transform.position.z);
                 GetComponent<Rigidbody2D>().gravityScale = -GetComponent<Rigidbody2D>().gravityScale;
                 transform.Rotate(Vector2.left * 180);
 
