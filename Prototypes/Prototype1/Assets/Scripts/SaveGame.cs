@@ -20,10 +20,6 @@ public class SaveGame : MonoBehaviour
     {
         path = Application.persistentDataPath + "/Data";
     }
-    public void SavePlayerProgress()
-    {
-
-    }
 
     public void SaveLevelProgress()
     {      

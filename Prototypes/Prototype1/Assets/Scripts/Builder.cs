@@ -13,7 +13,8 @@ public class Builder : MonoBehaviour
     public GameObject UIObjectToHide, binObject, ButtonPrefab, BuildingTabPanel;
     private GameObject placingObject;
     private List<Text> buttonTexts = new List<Text>();
-    private bool CanBeRotated = false;
+    private bool CanBeRotated = false, placingTeleporter;
+    private int BuildingCounter = 0,currentNumber;
 
     public static bool ValidateBuildCount = true;
 
@@ -40,16 +41,25 @@ public class Builder : MonoBehaviour
         {
             //Spawn prefab
             placingObject = Instantiate(BuildingPrefabs[objectNumber], transform.position, transform.rotation);
-            placingObject.name = BuildingPrefabs[objectNumber].name + Random.Range(0, 1000000);
-            placingObject.GetComponentInChildren<ValidateBuild>().ActivateValidator();
-            //TODO DONT HAVE THIS AS THE NAME
-            CanBeRotated = placingObject.GetComponent<CanBeRotated>().canBeRotated;
+            placingObject.name = BuildingPrefabs[objectNumber].name + BuildingCounter;
 
+            if (placingObject.GetComponent<PlaceTeleporter>())
+            {
+                placingObject.transform.position = Vector3.zero;
+                placingObject = placingObject.GetComponent<PlaceTeleporter>().A;
+                placingTeleporter = true;
+            }
+            else
+            {
+                placingObject.GetComponentInChildren<ValidateBuild>().ActivateValidator();
+                CanBeRotated = placingObject.GetComponent<CanBeRotated>().canBeRotated;
+            }
+
+            currentNumber = objectNumber;
             UIObjectToHide.SetActive(false);
             binObject.SetActive(true);
             rotatecount = 0;
-            BuildLimitsForLevel[objectNumber]--;
-            buttonTexts[objectNumber].text = BuildingPrefabs[objectNumber].name + "\n" + BuildLimitsForLevel[objectNumber] + " Remaining";
+
         }
     }
 
@@ -74,14 +84,38 @@ public class Builder : MonoBehaviour
 
         placingObject.transform.position = MousePos;
 
-        if(Input.GetAxisRaw("Fire1") > 0)
+        if(Input.GetButtonDown("Fire1"))
         {
-            if (ValidateBuildCount)
+            if (placingTeleporter)
             {
+                if (!placingObject.GetComponentInParent<PlaceTeleporter>().FirstPlaced)
+                {
+                    Debug.Log("First placed");
+                    placingObject.GetComponentInParent<PlaceTeleporter>().FirstPlaced = true;
+                    placingObject = placingObject.GetComponentInParent<PlaceTeleporter>().B;
+                    placingObject.SetActive(true);
+                }
+                else
+                {
+                    Debug.Log("Second placed");
+                    BuildLimitsForLevel[currentNumber]--;
+                    placingObject = null;
+                    placingTeleporter = false;
+                    BuildingCounter++;
+                    SwitchMenu();
+                }
+            }
+            else if (ValidateBuildCount)
+            {
+                BuildLimitsForLevel[currentNumber]--;
+                buttonTexts[currentNumber].text = BuildingPrefabs[currentNumber].name + "\n" + BuildLimitsForLevel[currentNumber] + " Remaining";
+
                 placingObject.GetComponentInChildren<ValidateBuild>().DisableValidator();
                 placingObject = null;
+                BuildingCounter++;
                 SwitchMenu();
             }
+            
         }
     }
 
@@ -94,7 +128,7 @@ public class Builder : MonoBehaviour
 
     public void BinIt()
     {
-        Destroy(placingObject);
+        Destroy(placingObject.transform.parent);
         SwitchMenu();
     }
 
