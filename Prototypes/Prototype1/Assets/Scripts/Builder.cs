@@ -25,6 +25,8 @@ public class Builder : MonoBehaviour
         int count = 0;
         foreach (GameObject g in BuildingPrefabs)
         {
+            if (BuildLimitsForLevel[count] == 0) { continue; }
+
             GameObject button = Instantiate(ButtonPrefab, transform.position, transform.rotation);
             button.transform.SetParent(BuildingTabPanel.transform);
 

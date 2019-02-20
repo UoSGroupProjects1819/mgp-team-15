@@ -733,6 +733,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4722477835264245981, guid: 9d62698757a017a44b3f8b6e82c2003a,
+        type: 3}
+      propertyPath: BuildLimitsForLevel.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722477835264245981, guid: 9d62698757a017a44b3f8b6e82c2003a,
+        type: 3}
+      propertyPath: BuildLimitsForLevel.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722477835264245981, guid: 9d62698757a017a44b3f8b6e82c2003a,
+        type: 3}
+      propertyPath: BuildLimitsForLevel.Array.data[3]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722477835264245981, guid: 9d62698757a017a44b3f8b6e82c2003a,
+        type: 3}
+      propertyPath: BuildLimitsForLevel.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d62698757a017a44b3f8b6e82c2003a, type: 3}
 --- !u!61 &4668777601086765193
