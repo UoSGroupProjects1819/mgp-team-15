@@ -7,7 +7,7 @@ public class ResetLevel : MonoBehaviour
 {
     public Builder BuilderScript;
     public Spawn SpawnScript;
-    public GameObject BuildMenu;
+    public GameObject BuildMenu,EndMenu;
     public void Reset()
     {
 
@@ -21,6 +21,7 @@ public class ResetLevel : MonoBehaviour
         BuilderScript.ResetLimits();
         Destroy(SpawnScript.SpawnedPlayer);
         BuildMenu.SetActive(true);
+        EndMenu.SetActive(false);
     }
 
 }

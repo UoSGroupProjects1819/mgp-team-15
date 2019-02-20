@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
         else if (collision.transform.tag == "Bounce")
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up*15, ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(transform.TransformDirection(Vector3.up)*15, ForceMode2D.Impulse);
         }
     }
 

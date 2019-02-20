@@ -7,7 +7,7 @@ public class Builder : MonoBehaviour
 {
     [Header("ARRAYS MUST BE SAME SIZE")]
     public int[] BuildLimitsForLevel;
-    private int[] OriginalLimitsForLevel;
+    private List<int> OriginalLimitsForLevel = new List<int>();
 
     public GameObject[] BuildingPrefabs;
 
@@ -37,7 +37,13 @@ public class Builder : MonoBehaviour
 
             count++;
         }
-        OriginalLimitsForLevel = BuildLimitsForLevel;
+
+        count = 0;
+        foreach (int a in BuildLimitsForLevel)
+        {
+            OriginalLimitsForLevel.Add(BuildLimitsForLevel[count]);
+            count++;
+        }
     }
 
     public void constructObject(int objectNumber)
@@ -160,7 +166,13 @@ public class Builder : MonoBehaviour
 
     public void ResetLimits()
     {
-        BuildLimitsForLevel = OriginalLimitsForLevel;
+        int count = 0;
+        foreach (int a in BuildLimitsForLevel)
+        {
+            BuildLimitsForLevel[count] = OriginalLimitsForLevel[count];
+            count++;
+        }
+
         UpdateBuildingIcons();
     }
 }
