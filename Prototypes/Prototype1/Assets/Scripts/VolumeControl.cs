@@ -11,6 +11,8 @@ public class VolumeControl : MonoBehaviour
 
     public void ChangeVolume()
     {
+        PlayerPrefs.SetInt("Saved", 1);
         VolumeMixer.SetFloat("MasterVolume", VolumeSlider.value);
+        PlayerPrefs.SetFloat("Volume", VolumeSlider.value);
     }
 }

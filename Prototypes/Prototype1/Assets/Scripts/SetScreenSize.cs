@@ -9,8 +9,8 @@ public class SetScreenSize : MonoBehaviour
     private int current_w = 0;
     private int current_h = 0;
 
-    private float w_amount = 33.5f; //Minimum units horizontally
-    private float h_amount = 20f; //Minimum units vertically
+    private float w_amount = 33.5f*2; //Minimum units horizontally
+    private float h_amount = 20f*2; //Minimum units vertically
 
     private Camera cam;
 

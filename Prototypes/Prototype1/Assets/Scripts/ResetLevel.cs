@@ -5,10 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class ResetLevel : MonoBehaviour
 {
+    public Builder BuilderScript;
+    public Spawn SpawnScript;
+    public GameObject BuildMenu;
     public void Reset()
     {
-        int myNumber = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadSceneAsync(myNumber);
+
+        GameObject[] UserObjects = GameObject.FindGameObjectsWithTag("USEROBJECT");
+
+        foreach (GameObject G in UserObjects)
+        {
+            Destroy(G);
+        }
+
+        BuilderScript.ResetLimits();
+        Destroy(SpawnScript.SpawnedPlayer);
+        BuildMenu.SetActive(true);
     }
 
 }

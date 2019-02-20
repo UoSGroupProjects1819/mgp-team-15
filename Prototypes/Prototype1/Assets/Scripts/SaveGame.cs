@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SaveGame : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class SaveGame : MonoBehaviour
     public GameObject saveButton;
     string path = "";
     string file = "/LevelSavaData";
+    public Dropdown GraphicsDropdown;
+    public Slider VolumeSlider;
 
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class SaveGame : MonoBehaviour
     private void Start()
     {
         path = Application.persistentDataPath + "/Data";
+        LoadSettings();
     }
 
     public void SaveLevelProgress()
@@ -121,5 +125,15 @@ public class SaveGame : MonoBehaviour
 
         f.Close();
         saveButton.SetActive(true);
+    }
+
+    public void LoadSettings()
+    {
+        if(PlayerPrefs.GetInt("Saved") != 1) { return; }
+        float Volume = PlayerPrefs.GetFloat("Volume");
+        int Graphics = PlayerPrefs.GetInt("Graphics");
+
+        VolumeSlider.value = Volume;
+        GraphicsDropdown.value = Graphics;
     }
 }

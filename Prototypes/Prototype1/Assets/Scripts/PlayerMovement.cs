@@ -48,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
         {
             myForce.relativeForce = -myForce.relativeForce;
         }
+
+        else if (collision.transform.tag == "Bounce")
+        {
+            GetComponent<Rigidbody2D>().AddForce(Vector2.up*15, ForceMode2D.Impulse);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

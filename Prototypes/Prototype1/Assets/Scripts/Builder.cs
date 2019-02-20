@@ -7,6 +7,8 @@ public class Builder : MonoBehaviour
 {
     [Header("ARRAYS MUST BE SAME SIZE")]
     public int[] BuildLimitsForLevel;
+    private int[] OriginalLimitsForLevel;
+
     public GameObject[] BuildingPrefabs;
 
     private int rotatecount = 0;
@@ -33,6 +35,7 @@ public class Builder : MonoBehaviour
 
             count++;
         }
+        OriginalLimitsForLevel = BuildLimitsForLevel;
     }
 
     public void constructObject(int objectNumber)
@@ -151,5 +154,11 @@ public class Builder : MonoBehaviour
             count++;
         }
 
+    }
+
+    public void ResetLimits()
+    {
+        BuildLimitsForLevel = OriginalLimitsForLevel;
+        UpdateBuildingIcons();
     }
 }

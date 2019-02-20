@@ -8,6 +8,7 @@ TagManager:
   - USEROBJECT
   - Flip
   - Deflective
+  - Bounce
   layers:
   - Default
   - TransparentFX
