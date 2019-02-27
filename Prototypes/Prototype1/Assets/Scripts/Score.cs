@@ -2,42 +2,60 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
     public GameObject score, FinishLevelDisplay;
     public Spawn spawnPoint;
     public Text TimeToCompleteText;
-    public Image Star1, Star2, Star3;
     public int ThreeStarTimer, TwoStarTimer, OneStarTimer;
-    public Sprite Star;
+    public Sprite Star,BlankStar;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            score.SetActive(true);
-            TimeToCompleteText.text = "YOU COMPLETED IT IN " + Mathf.RoundToInt(Spawn.Timer) +" SECONDS!";
+            FinishLevelDisplay.SetActive(true);
 
-            if (Spawn.Timer < ThreeStarTimer)
+            Respawn Res = GameObject.Find("MenuLogic").GetComponent<Respawn>();
+
+            score.SetActive(true);
+            if(Res.lives < 3)
             {
-                Star1.sprite = Star;
-                Star2.sprite = Star;
-                Star3.sprite = Star;
+                TimeToCompleteText.text = "YOU COMPLETED IT IN " + Mathf.RoundToInt(Spawn.Timer) + " SECONDS!" + "\n" + "For each live lost your maximum score is reduced";
             }
-            else if (Spawn.Timer < TwoStarTimer)
+            else
             {
-                Star1.sprite = Star;
-                Star2.sprite = Star;
+                TimeToCompleteText.text = "YOU COMPLETED IT IN " + Mathf.RoundToInt(Spawn.Timer) + " SECONDS!";
             }
-            else if (Spawn.Timer < ThreeStarTimer)
+            
+            GameObject[] Stars = GameObject.FindGameObjectsWithTag("StarUI");
+            int count = 1;
+            foreach (GameObject h in Stars)
             {
-                Star1.sprite = Star;
+                if(count <= Res.lives + 2)
+                {
+                    h.GetComponent<Image>().sprite = Star;
+                }
+                else
+                {
+                    h.GetComponent<Image>().sprite = BlankStar;
+                }
+                count++;
             }
+
+            int oldScore = PlayerPrefs.GetInt("HighScoreLevel" + SceneManager.GetActiveScene().buildIndex);            
+            
+            if (Res.lives+2 > oldScore)
+            {
+                PlayerPrefs.SetInt("HighScoreLevel" + SceneManager.GetActiveScene().buildIndex,Res.lives+2);
+            }
+
+            GameObject.Find("MenuLogic").GetComponent<Respawn>().ResetLives();
 
             score.SetActive(false);
             Destroy(spawnPoint.SpawnedPlayer);
-            FinishLevelDisplay.SetActive(true);
 
         }
     }

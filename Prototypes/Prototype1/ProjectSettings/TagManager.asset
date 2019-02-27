@@ -9,6 +9,8 @@ TagManager:
   - Flip
   - Deflective
   - Bounce
+  - HeartUI
+  - StarUI
   layers:
   - Default
   - TransparentFX

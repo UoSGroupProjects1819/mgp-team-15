@@ -17,7 +17,7 @@ public class Spawn : MonoBehaviour
     private Transform camTransform, playerTransform;
 
     //Current player in scene, outofbounds object in scene, end point in scene, 
-    public GameObject SpawnedPlayer,outOfBounds,EndPoint;
+    public GameObject SpawnedPlayer,EndPoint;
 
     //Time from sim start
     public static float Timer = 0.00f;
@@ -37,7 +37,6 @@ public class Spawn : MonoBehaviour
         startPanel.SetActive(false);
         Lerping = true;
 
-        outOfBounds.SetActive(true);
         EndPoint.SetActive(true);
     }
 
