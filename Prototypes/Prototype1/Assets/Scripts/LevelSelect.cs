@@ -11,14 +11,23 @@ public class LevelSelect : MonoBehaviour
 
     public void LoadLevel(int number)
     {
-        SceneManager.LoadSceneAsync(number);
+        bool PreStarted = GameObject.Find("SaveGame").GetComponent<SaveGame>().LoadSavedLevel("/"+number);
+        if (!PreStarted)
+        {
+            SceneManager.LoadSceneAsync(number);
+        }
     }
 
     public void NextLevel()
     {
         int NextlevelInt = SceneManager.GetActiveScene().buildIndex + 1;
 
-        SceneManager.LoadSceneAsync(NextlevelInt);
+        bool PreStarted = GameObject.Find("SaveGame").GetComponent<SaveGame>().LoadSavedLevel("/" + NextlevelInt);
+        if (!PreStarted)
+        {
+            SceneManager.LoadSceneAsync(NextlevelInt);
+        }
+
     }
 
     private void Start()
@@ -27,7 +36,7 @@ public class LevelSelect : MonoBehaviour
         for(int c = 1; c< (SceneManager.sceneCountInBuildSettings); c++)
         {
             GameObject spawn =Instantiate(LevelButton, transform.position, transform.rotation);
-            spawn.GetComponentInChildren<Text>().text = "LEVEL " + c + ": ";
+            spawn.GetComponentInChildren<Text>().text = "LEVEL " + c + ": " + PlayerPrefs.GetInt("HighScoreLevel" + c)+"/5 STARS";
             spawn.transform.SetParent(LevelViewScroll.transform);
             spawn.GetComponent<ButtonLoadLevel>().LevelToLoad = c;
         }

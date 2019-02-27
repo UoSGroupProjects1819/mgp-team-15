@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Respawn : MonoBehaviour
 {
-    public Spawn spawnPoint;
-    public static int lives = 3;
-    public Sprite EmptyHeart, FilledHeart; 
+    public int lives = 3;
+    public Sprite EmptyHeart, FilledHeart;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Start()
     {
-        if(other.tag != "Player") { return; }
-
-        Destroy(spawnPoint.SpawnedPlayer);
-        spawnPoint.startPanel.SetActive(true);
+        UpdateLives();
+    }
+    public void TakeLive()
+    {
         lives--;
+        UpdateLives();
+    }
+    public void UpdateLives()
+    {
         GameObject[] Hearts = GameObject.FindGameObjectsWithTag("HeartUI");
         int count = 1;
         foreach (GameObject h in Hearts)
@@ -30,6 +34,11 @@ public class Respawn : MonoBehaviour
             }
             count++;
         }
-        
+    }
+    public void ResetLives()
+    {
+        lives = 5;
+        PlayerPrefs.SetInt(SceneManager.GetActiveScene().buildIndex + "Lvl", 5);
+        UpdateLives();
     }
 }

@@ -10,7 +10,7 @@ public class SaveGame : MonoBehaviour
     private Builder buildSource;
     public GameObject saveButton;
     string path = "";
-    string file = "/LevelSavaData";
+    string file = "";
     public Dropdown GraphicsDropdown;
     public Slider VolumeSlider;
 
@@ -26,7 +26,8 @@ public class SaveGame : MonoBehaviour
     }
 
     public void SaveLevelProgress()
-    {      
+    {
+        file = "/" + SceneManager.GetActiveScene().buildIndex;
         if (!Directory.Exists(path))
         {
             Directory.CreateDirectory(path);
@@ -39,7 +40,10 @@ public class SaveGame : MonoBehaviour
         }
 
         StreamWriter write = File.CreateText(path + file);
+
         write.WriteLine(SceneManager.GetActiveScene().buildIndex);
+
+        PlayerPrefs.SetInt(SceneManager.GetActiveScene().buildIndex + "Lvl", GameObject.Find("MenuLogic").GetComponent<Respawn>().lives);
 
         GameObject[] UserObjects = GameObject.FindGameObjectsWithTag("USEROBJECT");
 
@@ -55,25 +59,28 @@ public class SaveGame : MonoBehaviour
         write.Close();
     }
 
-    public void LoadSavedLevel()
-    {
-        StartCoroutine("LDGameFromFile");
-    }
-
-    private IEnumerator LDGameFromFile()
+    public bool LoadSavedLevel(string LevelName)
     {
         if (!Directory.Exists(path))
         {
             Debug.Log("No directory found to load from!");
-            yield break;
+            return false;
         }
-        if (!File.Exists(path + file))
+        if (!File.Exists(path + LevelName))
         {
             Debug.Log("No save file found in directory!");
-            yield break;
+            return false;
         }
+        StartCoroutine("LDGameFromFile", LevelName);
+        return true;
+    }
+
+    private IEnumerator LDGameFromFile(string LevelName)
+    {
+        file = LevelName;
 
         StreamReader f = new StreamReader(path + file);
+
         int buildIndex = int.Parse(f.ReadLine());
 
         AsyncOperation lod = SceneManager.LoadSceneAsync(buildIndex);
@@ -89,6 +96,9 @@ public class SaveGame : MonoBehaviour
 
         buildSource = GameObject.Find("Builder").GetComponent<Builder>();
         Debug.Log("Level loaded");
+        
+        GameObject.Find("MenuLogic").GetComponent<Respawn>().lives = PlayerPrefs.GetInt(SceneManager.GetActiveScene().buildIndex + "Lvl");
+        GameObject.Find("MenuLogic").GetComponent<Respawn>().UpdateLives();
 
         int USERCOUNT = int.Parse(f.ReadLine());
 

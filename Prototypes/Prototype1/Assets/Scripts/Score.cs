@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
@@ -17,8 +18,10 @@ public class Score : MonoBehaviour
         {
             FinishLevelDisplay.SetActive(true);
 
+            Respawn Res = GameObject.Find("MenuLogic").GetComponent<Respawn>();
+
             score.SetActive(true);
-            if(Respawn.lives < 3)
+            if(Res.lives < 3)
             {
                 TimeToCompleteText.text = "YOU COMPLETED IT IN " + Mathf.RoundToInt(Spawn.Timer) + " SECONDS!" + "\n" + "For each live lost your maximum score is reduced";
             }
@@ -31,7 +34,7 @@ public class Score : MonoBehaviour
             int count = 1;
             foreach (GameObject h in Stars)
             {
-                if(count <= Respawn.lives + 2)
+                if(count <= Res.lives + 2)
                 {
                     h.GetComponent<Image>().sprite = Star;
                 }
@@ -41,6 +44,15 @@ public class Score : MonoBehaviour
                 }
                 count++;
             }
+
+            int oldScore = PlayerPrefs.GetInt("HighScoreLevel" + SceneManager.GetActiveScene().buildIndex);            
+            
+            if (Res.lives+2 > oldScore)
+            {
+                PlayerPrefs.SetInt("HighScoreLevel" + SceneManager.GetActiveScene().buildIndex,Res.lives+2);
+            }
+
+            GameObject.Find("MenuLogic").GetComponent<Respawn>().ResetLives();
 
             score.SetActive(false);
             Destroy(spawnPoint.SpawnedPlayer);

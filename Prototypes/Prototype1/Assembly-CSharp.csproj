@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\MiniMenu.cs" />
     <Compile Include="Assets\Scripts\PauseToggle.cs" />
     <Compile Include="Assets\Scripts\PlaceTeleporter.cs" />
+    <Compile Include="Assets\Scripts\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\ResetLevel.cs" />
     <Compile Include="Assets\Scripts\Respawn.cs" />
