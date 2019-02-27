@@ -6,15 +6,21 @@ using UnityEngine.UI;
 public class Builder : MonoBehaviour
 {
     [Header("ARRAYS MUST BE SAME SIZE")]
-    public int[] BuildLimitsForLevel;
+    public int[] BuildLimitsForLevel;//Limit objects for each level
     private List<int> OriginalLimitsForLevel = new List<int>();
+    public GameObject[] BuildingPrefabs;//Objects build-able by player
 
-    public GameObject[] BuildingPrefabs;
+    private int rotatecount = 0;//toggles between angles for rotatable objects
 
-    private int rotatecount = 0;
     public GameObject UIObjectToHide, binObject, ButtonPrefab, BuildingTabPanel;
-    private GameObject placingObject;
-    private List<Text> buttonTexts = new List<Text>();
+    //UIObject to hide = Build canvas
+    //binObject = UI bin button
+    //Button prefab = UI button for each object
+    //Building tab panel = Panel for building
+
+    private GameObject placingObject;//Current object being moved and placed
+
+    private List<Text> buttonTexts = new List<Text>();//Values on buttons which display limits
     private bool CanBeRotated = false, placingTeleporter;
     private int BuildingCounter = 0,currentNumber;
 
@@ -22,6 +28,7 @@ public class Builder : MonoBehaviour
 
     private void Start()
     {
+        //Populate building panel with all the objects which can be built
         int count = 0;
         foreach (GameObject g in BuildingPrefabs)
         {
@@ -38,6 +45,7 @@ public class Builder : MonoBehaviour
             count++;
         }
 
+        //Store the levels original limits
         count = 0;
         foreach (int a in BuildLimitsForLevel)
         {
@@ -46,6 +54,7 @@ public class Builder : MonoBehaviour
         }
     }
 
+    //Spawn object into scene
     public void constructObject(int objectNumber)
     {
         if(BuildLimitsForLevel[objectNumber] > 0)
@@ -78,6 +87,7 @@ public class Builder : MonoBehaviour
     {
         if (placingObject == null) { return; }
 
+        //Rotate objects if allowed
         if (CanBeRotated)
         {
             if (Input.GetButtonDown("Rotate"))
@@ -91,6 +101,7 @@ public class Builder : MonoBehaviour
             }
         }
 
+        //Move object
         Vector3 MousePos = GetMousePosition();
 
         int x = Mathf.RoundToInt(MousePos.x);
@@ -99,6 +110,7 @@ public class Builder : MonoBehaviour
 
         placingObject.transform.position = CorrectedPosition;
 
+        //Place object
         if(Input.GetButtonDown("Fire1"))
         {
             if (placingTeleporter)
@@ -134,6 +146,7 @@ public class Builder : MonoBehaviour
         }
     }
 
+    //Get mouse position in world
     private Vector3 GetMousePosition()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -141,18 +154,21 @@ public class Builder : MonoBehaviour
         return new Vector3(pos.x, pos.y, 0);
     }
 
+    //Destroy placing object
     public void BinIt()
     {
         Destroy(placingObject.transform.parent);
         SwitchMenu();
     }
 
+    //Switch menu from placing to build
     private void SwitchMenu()
     {
         binObject.SetActive(false);
         UIObjectToHide.SetActive(true);
     }
 
+    //Update limits on building objects
     public void UpdateBuildingIcons()
     {
         int count = 0;
@@ -161,9 +177,9 @@ public class Builder : MonoBehaviour
             buttonTexts[count].text = BuildingPrefabs[count].name + "\n" + BuildLimitsForLevel[count] + " Remaining";
             count++;
         }
-
     }
 
+    //Reet to default level limits
     public void ResetLimits()
     {
         int count = 0;

@@ -146,13 +146,11 @@ MonoBehaviour:
   FinishLevelDisplay: {fileID: 0}
   spawnPoint: {fileID: 0}
   TimeToCompleteText: {fileID: 0}
-  Star1: {fileID: 0}
-  Star2: {fileID: 0}
-  Star3: {fileID: 0}
   ThreeStarTimer: 5
   TwoStarTimer: 10
   OneStarTimer: 15
   Star: {fileID: 21300000, guid: 3ecbd6b98cc9d85478e58ed88c21fade, type: 3}
+  BlankStar: {fileID: 21300000, guid: 22a9dde7e43081f4daa2f6b546f354bd, type: 3}
 --- !u!114 &5668480330205152143
 MonoBehaviour:
   m_ObjectHideFlags: 0

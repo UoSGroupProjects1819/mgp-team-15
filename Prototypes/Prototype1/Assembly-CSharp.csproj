@@ -62,13 +62,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Builder.cs" />
     <Compile Include="Assets\Scripts\ButtonAction.cs" />
+    <Compile Include="Assets\Scripts\ButtonLoadLevel.cs" />
     <Compile Include="Assets\Scripts\CanBeRotated.cs" />
     <Compile Include="Assets\Scripts\ChangeQuality.cs" />
     <Compile Include="Assets\Scripts\DisableOnStart.cs" />
     <Compile Include="Assets\Scripts\ExitGame.cs" />
-    <Compile Include="Assets\Scripts\HeartLeft.cs" />
-    <Compile Include="Assets\Scripts\HeartMiddle.cs" />
-    <Compile Include="Assets\Scripts\HeartRight.cs" />
     <Compile Include="Assets\Scripts\KeyNDoor.cs" />
     <Compile Include="Assets\Scripts\LevelSelect.cs" />
     <Compile Include="Assets\Scripts\MiniMenu.cs" />

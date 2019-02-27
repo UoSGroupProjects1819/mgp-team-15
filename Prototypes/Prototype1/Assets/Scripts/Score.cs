@@ -8,36 +8,42 @@ public class Score : MonoBehaviour
     public GameObject score, FinishLevelDisplay;
     public Spawn spawnPoint;
     public Text TimeToCompleteText;
-    public Image Star1, Star2, Star3;
     public int ThreeStarTimer, TwoStarTimer, OneStarTimer;
-    public Sprite Star;
+    public Sprite Star,BlankStar;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            score.SetActive(true);
-            TimeToCompleteText.text = "YOU COMPLETED IT IN " + Mathf.RoundToInt(Spawn.Timer) +" SECONDS!";
+            FinishLevelDisplay.SetActive(true);
 
-            if (Spawn.Timer < ThreeStarTimer)
+            score.SetActive(true);
+            if(Respawn.lives < 3)
             {
-                Star1.sprite = Star;
-                Star2.sprite = Star;
-                Star3.sprite = Star;
+                TimeToCompleteText.text = "YOU COMPLETED IT IN " + Mathf.RoundToInt(Spawn.Timer) + " SECONDS!" + "\n" + "For each live lost your maximum score is reduced";
             }
-            else if (Spawn.Timer < TwoStarTimer)
+            else
             {
-                Star1.sprite = Star;
-                Star2.sprite = Star;
+                TimeToCompleteText.text = "YOU COMPLETED IT IN " + Mathf.RoundToInt(Spawn.Timer) + " SECONDS!";
             }
-            else if (Spawn.Timer < ThreeStarTimer)
+            
+            GameObject[] Stars = GameObject.FindGameObjectsWithTag("StarUI");
+            int count = 1;
+            foreach (GameObject h in Stars)
             {
-                Star1.sprite = Star;
+                if(count <= Respawn.lives + 2)
+                {
+                    h.GetComponent<Image>().sprite = Star;
+                }
+                else
+                {
+                    h.GetComponent<Image>().sprite = BlankStar;
+                }
+                count++;
             }
 
             score.SetActive(false);
             Destroy(spawnPoint.SpawnedPlayer);
-            FinishLevelDisplay.SetActive(true);
 
         }
     }
