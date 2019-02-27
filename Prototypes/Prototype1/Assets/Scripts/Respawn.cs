@@ -11,6 +11,7 @@ public class Respawn : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(lives);
         UpdateLives();
     }
     public void TakeLive()
@@ -37,8 +38,8 @@ public class Respawn : MonoBehaviour
     }
     public void ResetLives()
     {
-        lives = 5;
-        PlayerPrefs.SetInt(SceneManager.GetActiveScene().buildIndex + "Lvl", 5);
+        lives = 3;
+        PlayerPrefs.SetInt(SceneManager.GetActiveScene().buildIndex + "Lvl", 3);
         UpdateLives();
     }
 }

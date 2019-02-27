@@ -45,12 +45,11 @@ public class Score : MonoBehaviour
                 count++;
             }
 
-            int oldScore = PlayerPrefs.GetInt("HighScoreLevel" + SceneManager.GetActiveScene().buildIndex);            
-            
+            int oldScore = PlayerPrefs.GetInt("HighScoreLevel" + SceneManager.GetActiveScene().buildIndex);
             if (Res.lives+2 > oldScore)
             {
                 PlayerPrefs.SetInt("HighScoreLevel" + SceneManager.GetActiveScene().buildIndex,Res.lives+2);
-            }
+            }//THIS DOESNT WORK LIVES IS BEING SET AS 5
 
             GameObject.Find("MenuLogic").GetComponent<Respawn>().ResetLives();
 
