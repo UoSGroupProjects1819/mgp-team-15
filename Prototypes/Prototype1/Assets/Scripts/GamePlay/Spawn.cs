@@ -45,7 +45,6 @@ public class Spawn : MonoBehaviour
     {
         if (!Lerping)
         {
-            Debug.Log("originalsize:"+orthosize + " currentsize:" + Camera.main.orthographicSize);
             if (Camera.main.orthographicSize < orthosize)
             {
                 Camera.main.orthographicSize += 0.1f;

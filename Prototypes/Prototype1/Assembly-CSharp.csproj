@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\GamePlay\Builder.cs" />
     <Compile Include="Assets\Scripts\GamePlay\CanBeRotated.cs" />
     <Compile Include="Assets\Scripts\GamePlay\DisableOnStart.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Flag.cs" />
     <Compile Include="Assets\Scripts\GamePlay\KeyNDoor.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlaceTeleporter.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerDeath.cs" />

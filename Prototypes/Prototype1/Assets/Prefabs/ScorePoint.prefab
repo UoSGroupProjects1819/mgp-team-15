@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6810739755790113422}
   - component: {fileID: 8901026868837054414}
   - component: {fileID: 5668480330205152143}
+  - component: {fileID: 9095555483224915247}
   m_Layer: 0
   m_Name: ScorePoint
   m_TagString: Untagged
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6211feb93ab28db40b673fcb7f618182, type: 3}
-  m_Color: {r: 0.9622642, g: 0.32226774, b: 0.93522364, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 16ff283a5b670a44d9f01b26039a4c8b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,7 +101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -149,8 +150,8 @@ MonoBehaviour:
   ThreeStarTimer: 5
   TwoStarTimer: 10
   OneStarTimer: 15
-  Star: {fileID: 21300000, guid: 3ecbd6b98cc9d85478e58ed88c21fade, type: 3}
-  BlankStar: {fileID: 21300000, guid: 22a9dde7e43081f4daa2f6b546f354bd, type: 3}
+  Star: {fileID: 21300000, guid: 1c2b952e3d8888a4fbcb3e9a73823645, type: 3}
+  BlankStar: {fileID: 21300000, guid: a52f8309d566185459a884afe3645fe9, type: 3}
 --- !u!114 &5668480330205152143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +164,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64267e14d2804ee4685c251c5bbf8e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9095555483224915247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3808485705097240065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0754e22ec6fa544f94e4b1ea8c3cddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  one: {fileID: 21300000, guid: 16ff283a5b670a44d9f01b26039a4c8b, type: 3}
+  two: {fileID: 21300000, guid: 181229f4add2e124d93c278c5979b41b, type: 3}
+  me: {fileID: 7556332032105556414}
