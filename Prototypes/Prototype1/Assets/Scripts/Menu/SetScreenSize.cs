@@ -28,13 +28,14 @@ public class SetScreenSize : MonoBehaviour
         float width_size = (float)(w_amount * Screen.height / Screen.width * 0.5);
         float height_size = (float)(h_amount * Screen.width / Screen.height * 0.5) * ((float)Screen.height / Screen.width);
         cam.orthographicSize = Mathf.Max(height_size, width_size);
+        Spawn.orthosize = cam.orthographicSize;
     }
 
-    void Update()
+   /* void Update()
     {
         if (Screen.width != current_w || Screen.height != current_h)
         {
             SetRes();
         }
-    }
+    }*/
 }

@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 2, y: 3, z: 2}
   m_Children: []
   m_Father: {fileID: 8838914009629490187}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3119365357572938937
 SpriteRenderer:
@@ -107,8 +107,8 @@ Transform:
   m_LocalPosition: {x: 5.14, y: -3.47, z: -0.00838412}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children:
-  - {fileID: 4914841848076977901}
   - {fileID: 4601304306958508682}
+  - {fileID: 4914841848076977901}
   - {fileID: 8731313387405429985}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 1893071115157981869}
   - component: {fileID: 5423006451578668613}
   - component: {fileID: 7673561265518824655}
+  - component: {fileID: 4026264286583555219}
   m_Layer: 0
   m_Name: BouncyStraight
   m_TagString: Bounce
@@ -236,7 +237,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8838914009629490187}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1893071115157981869
 CapsuleCollider2D:
@@ -289,3 +290,16 @@ Rigidbody2D:
   m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &4026264286583555219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9067358742897606810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e127fa00eaea57e44987cf05aa250ade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  r: {fileID: 3119365357572938937}

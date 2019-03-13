@@ -21,6 +21,7 @@ public class Spawn : MonoBehaviour
 
     //Time from sim start
     public static float Timer = 0.00f;
+    public static float orthosize;
 
     private void Start()
     {
@@ -42,9 +43,22 @@ public class Spawn : MonoBehaviour
 
     private void Update()
     {
+        if (!Lerping)
+        {
+            Debug.Log("originalsize:"+orthosize + " currentsize:" + Camera.main.orthographicSize);
+            if (Camera.main.orthographicSize < orthosize)
+            {
+                Camera.main.orthographicSize += 0.1f;
+            }
+        }
+
         if (SpawnedPlayer == null)
         {
             camTransform.position = Vector3.Lerp(camTransform.position, new Vector3(0, 0, camTransform.position.z), Time.deltaTime * LerpSpeed);
+            if(Vector3.Distance(camTransform.position, new Vector3(0, 0, camTransform.position.z)) < 1)
+            {
+                Lerping = false;
+            }
             return;
         }
 
@@ -55,6 +69,12 @@ public class Spawn : MonoBehaviour
         {
             Vector3 adjustedPoisitionForDistance = new Vector3(playerTransform.position.x, playerTransform.position.y, camTransform.position.z);
             camTransform.position = Vector3.Lerp(camTransform.position, adjustedPoisitionForDistance, Time.deltaTime * LerpSpeed);
+
+            if (Camera.main.orthographicSize > 8)
+            {
+                Camera.main.orthographicSize -= 0.1f;
+            }
+
         }
     }
 

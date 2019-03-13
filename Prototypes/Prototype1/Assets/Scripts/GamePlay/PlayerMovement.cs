@@ -7,9 +7,16 @@ public class PlayerMovement : MonoBehaviour
     public Transform footPosition;
     public string LastName = "";//last name of object it hit
     private ConstantForce2D myForce;
+    public Sprite Stand, Walk1, Walk2,Jump,Hurt;
+    public Sprite Spring1, Spring2, Spring3;
+    private Rigidbody2D MyRigid;
+    private SpriteRenderer myRend;
+    SpriteRenderer r;
 
     private void Start()
     {
+        MyRigid = GetComponent<Rigidbody2D>();
+        myRend = GetComponent<SpriteRenderer>();
         myForce = GetComponent<ConstantForce2D>();
     }
 
@@ -43,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
             //move the player to the other side of the flip and invert gravity
             transform.position = new Vector3(transform.position.x, collision.transform.position.y - yDif - 0.5f, transform.position.z);
-            GetComponent<Rigidbody2D>().gravityScale = -GetComponent<Rigidbody2D>().gravityScale;
+            MyRigid.gravityScale = -GetComponent<Rigidbody2D>().gravityScale;
             transform.Rotate(Vector2.left * 180);
         }
         else if (collision.transform.tag == "Deflective")
@@ -52,7 +59,57 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.transform.tag == "Bounce")
         {
-            GetComponent<Rigidbody2D>().AddForce(transform.TransformDirection(Vector3.up)*15, ForceMode2D.Impulse);
+            MyRigid.AddForce(transform.TransformDirection(Vector3.up)*15, ForceMode2D.Impulse);
+            r = collision.gameObject.GetComponent<SpriteFind>().r;
+            StartCoroutine("Spring", collision.transform);
+        }
+    }
+
+    float timer = 0.00f;
+    bool walkToggle = true;
+    public bool dead = false;
+
+    private void Update()
+    {
+        if (dead)
+        {
+            myRend.sprite = Hurt;
+            return;
+        }
+
+        if (MyRigid.velocity.x > 0)
+        {
+            walkToggle = true;
+            //walk
+        }
+        else
+        {
+            myRend.sprite = Stand;
+            walkToggle = false;
+            //Stand
+        }
+
+        if (walkToggle)
+        {
+            timer += Time.deltaTime;
+            if (timer > 0.10f)
+            {
+                if (myRend.sprite == Walk1)
+                {
+                    myRend.sprite = Walk2;
+                }
+                else
+                {
+                    myRend.sprite = Walk1;
+                }
+                timer = 0.00f;
+            }
+        }
+
+        if (MyRigid.velocity.y > 2 || MyRigid.velocity.y < -1)
+        {
+            myRend.sprite = Jump;
+            //jump
         }
     }
 
@@ -66,5 +123,18 @@ public class PlayerMovement : MonoBehaviour
                 LastName = "";
             }
         }
+    }
+
+    private IEnumerator Spring(Transform springer)
+    {
+        Debug.Log(springer.name);        
+
+        r.sprite = Spring2;
+        yield return new WaitForSeconds(0.1f);
+        r.sprite = Spring3;
+        yield return new WaitForSeconds(0.2f);
+        r.sprite = Spring2;
+        yield return new WaitForSeconds(0.1f);
+        r.sprite = Spring1;
     }
 }

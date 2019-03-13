@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Respawn.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Spawn.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\SpriteFind.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Teleport.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ValidateBuild.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonAction.cs" />
