@@ -15,12 +15,12 @@ public class TextMatchSize : MonoBehaviour
         {
             t.color = Color.clear;
         }
-
         Invoke("DelayUI", 0.1f);
     }
 
-    void DelayUI()
+    public void DelayUI()
     {
+
         int SmallestSize = 10000;
         foreach (Text t in texts)
         {
@@ -29,12 +29,12 @@ public class TextMatchSize : MonoBehaviour
                 SmallestSize = t.cachedTextGenerator.fontSizeUsedForBestFit;
             }
         }
-        Debug.Log(SmallestSize);
+
         foreach (Text t in texts)
         {
-            t.resizeTextForBestFit = false;
             t.fontSize = SmallestSize;
             t.color = Color.white;
+            t.resizeTextForBestFit = false;
         }
     }
 
