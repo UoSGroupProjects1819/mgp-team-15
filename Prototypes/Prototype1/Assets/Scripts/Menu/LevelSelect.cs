@@ -39,7 +39,18 @@ public class LevelSelect : MonoBehaviour
         for(int c = 1; c< (SceneManager.sceneCountInBuildSettings); c++)
         {
             GameObject spawn =Instantiate(LevelButton, transform.position, transform.rotation);
-            spawn.GetComponentInChildren<Text>().text = "LEVEL " + c + ": " + PlayerPrefs.GetInt("HighScoreLevel" + c)+"/5 STARS";
+
+            //LevelLocked
+            if (PlayerPrefs.GetInt("PlayerLevel") < c)
+            {
+                spawn.GetComponentInChildren<Text>().text = "LEVEL " + c + ": " + "LOCKED";
+            }
+            //LevelUnlocked
+            else
+            {
+                spawn.GetComponentInChildren<Text>().text = "LEVEL " + c + ": " + PlayerPrefs.GetInt("HighScoreLevel" + c) + "/5 STARS";
+            }
+
             spawn.transform.SetParent(LevelViewScroll.transform);
             spawn.GetComponent<ButtonLoadLevel>().LevelToLoad = c;
         }

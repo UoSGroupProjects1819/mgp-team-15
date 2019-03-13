@@ -18,6 +18,7 @@ public class Score : MonoBehaviour
         if (other.tag == "Player")
         {
             FinishLevelDisplay.SetActive(true);
+            PlayerProgress.SaveProgress();
 
             Respawn Res = GameObject.Find("MenuLogic").GetComponent<Respawn>();
 
