@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D MyRigid;
     private SpriteRenderer myRend;
     SpriteRenderer r;
+    public int VerticalSpeed;
 
     private void Start()
     {
@@ -19,10 +20,8 @@ public class PlayerMovement : MonoBehaviour
         myRend = GetComponent<SpriteRenderer>();
         myForce = GetComponent<ConstantForce2D>();
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-
         if (collision.transform.tag == "Slope")
         {
             if (LastName == collision.transform.parent.name) { return; }
@@ -32,15 +31,22 @@ public class PlayerMovement : MonoBehaviour
             if (collision.transform.position.y > footPosition.position.y)
             {
                 //slide up
-                myForce.relativeForce = new Vector2(myForce.relativeForce.x, myForce.relativeForce.x);
+                Debug.Log("UP");
+                myForce.relativeForce = new Vector2(myForce.relativeForce.x, VerticalSpeed);
             }
             else
             {
                 //slide down
-                myForce.relativeForce = new Vector2(myForce.relativeForce.x, -myForce.relativeForce.x);
+                Debug.Log("DOWN");
+                myForce.relativeForce = new Vector2(myForce.relativeForce.x, -VerticalSpeed);
             }
         }
-        else if (collision.transform.tag == "Flip")
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+         if (collision.transform.tag == "Flip")
         {
             if (LastName == collision.transform.parent.name) { return; }
 
@@ -55,10 +61,13 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.transform.tag == "Deflective")
         {
+            Debug.Log("Deflect");
             myForce.relativeForce = -myForce.relativeForce;
+            MyRigid.velocity = Vector2.zero;
         }
         else if (collision.transform.tag == "Bounce")
         {
+            MyRigid.velocity = new Vector2(MyRigid.velocity.x,0);
             MyRigid.AddForce(transform.TransformDirection(Vector3.up)*15, ForceMode2D.Impulse);
             r = collision.gameObject.GetComponent<SpriteFind>().r;
             StartCoroutine("Spring", collision.transform);
@@ -106,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (MyRigid.velocity.y > 2 || MyRigid.velocity.y < -1)
+        if ((MyRigid.velocity.y > 2 || MyRigid.velocity.y < -1) && myForce.relativeForce.y == -1)
         {
             myRend.sprite = Jump;
             //jump
@@ -119,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (LastName == collision.transform.parent.name)
             {
-                myForce.relativeForce = new Vector2(myForce.relativeForce.x, 0);
+                myForce.relativeForce = new Vector2(myForce.relativeForce.x, -1);
                 LastName = "";
             }
         }

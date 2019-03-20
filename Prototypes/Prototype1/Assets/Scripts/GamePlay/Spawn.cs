@@ -66,7 +66,7 @@ public class Spawn : MonoBehaviour
         //Move camera between player and back to default view point
         if (Lerping)
         {
-            Vector3 adjustedPoisitionForDistance = new Vector3(playerTransform.position.x, playerTransform.position.y, camTransform.position.z);
+            Vector3 adjustedPoisitionForDistance = new Vector3(playerTransform.position.x, Mathf.Clamp(playerTransform.position.y,-8,16), camTransform.position.z);
             camTransform.position = Vector3.Lerp(camTransform.position, adjustedPoisitionForDistance, Time.deltaTime * LerpSpeed);
 
             if (Camera.main.orthographicSize > 8)

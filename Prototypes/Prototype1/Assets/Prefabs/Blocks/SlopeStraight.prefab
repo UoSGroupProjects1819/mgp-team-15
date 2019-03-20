@@ -56,9 +56,10 @@ GameObject:
   m_Component:
   - component: {fileID: 918768583022622527}
   - component: {fileID: 6088849969157400977}
+  - component: {fileID: 4903752802364909364}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: Slope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 426596111478794311}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.8, y: 3, z: 1}
+  m_LocalScale: {x: 1.1, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 3823069445439546061}
   m_RootOrder: 1
@@ -125,6 +126,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &4903752802364909364
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426596111478794311}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: e3a871425d84c4146a4ba0340e8b4a83, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.2, y: 0.24736843}
+  m_Direction: 1
 --- !u!1 &1613212763733256747
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +156,7 @@ GameObject:
   - component: {fileID: 1076282585035859155}
   m_Layer: 0
   m_Name: NormalStraight
-  m_TagString: Slope
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +189,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.98, y: 0.98}
+  m_Size: {x: 0.7, y: 0.98}
   m_Direction: 1
 --- !u!114 &3781554217908426244
 MonoBehaviour:
@@ -188,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myCollider: {fileID: 4605189671640405923}
   myRigid: {fileID: 1076282585035859155}
+  other: {fileID: 4903752802364909364}
 --- !u!50 &1076282585035859155
 Rigidbody2D:
   serializedVersion: 4
