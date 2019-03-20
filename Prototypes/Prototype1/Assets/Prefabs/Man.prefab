@@ -168,6 +168,7 @@ MonoBehaviour:
   Spring1: {fileID: 21300000, guid: fcdd5873e490cf94faf5a3f973e70546, type: 3}
   Spring2: {fileID: 21300000, guid: 8e2ab6648d2292b4b865d187babac3c9, type: 3}
   Spring3: {fileID: 21300000, guid: ca304765d3ec11646a63fdc7dede9326, type: 3}
+  VerticalSpeed: 6
   dead: 0
 --- !u!70 &3548252568788088629
 CapsuleCollider2D:

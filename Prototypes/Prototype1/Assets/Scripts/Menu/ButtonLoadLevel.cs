@@ -9,6 +9,7 @@ public class ButtonLoadLevel : MonoBehaviour
 
     public void LoadLevel()
     {
+        if(PlayerPrefs.GetInt("PlayerLevel") < LevelToLoad) { return; }
         GameObject.Find("Logic").GetComponent<LevelSelect>().LoadLevel(LevelToLoad);
     }
 }

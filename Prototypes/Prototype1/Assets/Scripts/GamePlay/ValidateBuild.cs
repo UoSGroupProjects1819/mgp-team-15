@@ -6,8 +6,9 @@ public class ValidateBuild : MonoBehaviour
 {
     public Collider2D myCollider;
     public Rigidbody2D myRigid;
+    public Collider2D other;
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerStay2D(Collider2D collider)
     {
         //Can't build here
         Builder.ValidateBuildCount = false;
@@ -31,5 +32,10 @@ public class ValidateBuild : MonoBehaviour
     {
         myCollider.isTrigger = false;
         myRigid.Sleep();
+        if (other != null)
+        {
+            myCollider.enabled = false;
+            other.enabled = true;
+        }
     }
 }

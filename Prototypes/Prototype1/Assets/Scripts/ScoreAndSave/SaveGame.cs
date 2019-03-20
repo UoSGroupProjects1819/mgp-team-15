@@ -138,7 +138,11 @@ public class SaveGame : MonoBehaviour
             {
                 if (ObjectName.Contains(g.name))
                 {
-                    Instantiate(g, CombinedPos, Quaternion.Euler(CombinedRot));
+                    GameObject spawn = Instantiate(g, CombinedPos, Quaternion.Euler(CombinedRot));
+                    if (spawn.GetComponentInChildren<ValidateBuild>())
+                    {
+                        spawn.GetComponentInChildren<ValidateBuild>().DisableValidator();
+                    }
                     buildSource.BuildLimitsForLevel[count]--;
                     Debug.Log("Spawn object");
                 }

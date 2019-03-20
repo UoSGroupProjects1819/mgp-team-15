@@ -32,7 +32,10 @@ public class Builder : MonoBehaviour
         int count = 0;
         foreach (GameObject g in BuildingPrefabs)
         {
-            if (BuildLimitsForLevel[count] == 0) { continue; }
+            if (BuildLimitsForLevel[count] == 0) {
+                count++;
+                buttonTexts.Add(null);
+                continue; }
 
             GameObject button = Instantiate(ButtonPrefab, transform.position, transform.rotation);
             button.transform.SetParent(BuildingTabPanel.transform);
@@ -135,6 +138,7 @@ public class Builder : MonoBehaviour
             else if (ValidateBuildCount)
             {
                 BuildLimitsForLevel[currentNumber]--;
+                //TODO bug where not all button are there
                 buttonTexts[currentNumber].text = BuildingPrefabs[currentNumber].name + "\n" + BuildLimitsForLevel[currentNumber] + " Remaining";
 
                 placingObject.GetComponentInChildren<ValidateBuild>().DisableValidator();
@@ -174,6 +178,11 @@ public class Builder : MonoBehaviour
         int count = 0;
         foreach(int b in BuildLimitsForLevel)
         {
+            if (b == 0)
+            {
+                count++;
+                continue;
+            }
             buttonTexts[count].text = BuildingPrefabs[count].name + "\n" + BuildLimitsForLevel[count] + " Remaining";
             count++;
         }
