@@ -1,5 +1,0 @@
-platformer pack -- https://kenney.nl/assets/platformer-pack-redux
-foliage pack -- https://kenney.nl/assets/foliage-pack
-jumper pack -- https://kenney.nl/assets/jumper-pack
-background elements -- https://kenney.nl/assets/background-elements-redux
-text -- https://www.dafont.com/fontopofontopo.font
