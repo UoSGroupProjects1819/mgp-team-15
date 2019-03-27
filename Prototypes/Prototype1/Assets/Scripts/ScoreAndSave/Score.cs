@@ -72,6 +72,7 @@ public class Score : MonoBehaviour
             score.SetActive(false);
             Destroy(spawnPoint.SpawnedPlayer);
 
+            spawnPoint.Timer = 0.00f;
         }
     }
 

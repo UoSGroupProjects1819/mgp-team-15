@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Menu\ButtonAction.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonLoadLevel.cs" />
     <Compile Include="Assets\Scripts\Menu\ChangeQuality.cs" />
+    <Compile Include="Assets\Scripts\Menu\CustomSizer.cs" />
     <Compile Include="Assets\Scripts\Menu\ExitGame.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelSelect.cs" />
     <Compile Include="Assets\Scripts\Menu\MiniMenu.cs" />
