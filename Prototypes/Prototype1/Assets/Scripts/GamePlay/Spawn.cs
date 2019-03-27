@@ -20,7 +20,7 @@ public class Spawn : MonoBehaviour
     public GameObject SpawnedPlayer,EndPoint;
 
     //Time from sim start
-    public static float Timer = 0.00f;
+    public float Timer = 0.00f;
     public static float orthosize;
 
     private void Start()
@@ -30,7 +30,6 @@ public class Spawn : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        Timer = 0.00f;
         SpawnedPlayer = Instantiate(Player, transform.position, transform.rotation);
 
         playerTransform = SpawnedPlayer.transform;
@@ -43,6 +42,8 @@ public class Spawn : MonoBehaviour
 
     private void Update()
     {
+        Timer += Time.deltaTime;
+
         if (!Lerping)
         {
             if (Camera.main.orthographicSize < orthosize)
@@ -60,8 +61,6 @@ public class Spawn : MonoBehaviour
             }
             return;
         }
-
-        Timer += Time.deltaTime;
 
         //Move camera between player and back to default view point
         if (Lerping)

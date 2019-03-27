@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D MyRigid;
     private SpriteRenderer myRend;
     SpriteRenderer r;
-    public int VerticalSpeed;
+    public int VerticalSpeed,HorizontalSpeed,FlyingSpeed;
 
     private void Start()
     {
@@ -32,13 +32,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 //slide up
                 Debug.Log("UP");
-                myForce.relativeForce = new Vector2(myForce.relativeForce.x, VerticalSpeed);
+                myForce.relativeForce = new Vector2(HorizontalSpeed, VerticalSpeed);
             }
             else
             {
                 //slide down
                 Debug.Log("DOWN");
-                myForce.relativeForce = new Vector2(myForce.relativeForce.x, -VerticalSpeed);
+                myForce.relativeForce = new Vector2(HorizontalSpeed, -VerticalSpeed);
             }
         }
     }
@@ -115,10 +115,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        //jump
         if ((MyRigid.velocity.y > 2 || MyRigid.velocity.y < -1) && myForce.relativeForce.y == -1)
         {
             myRend.sprite = Jump;
-            //jump
+            if (MyRigid.velocity.x > FlyingSpeed)
+            {
+                MyRigid.velocity = new Vector2(FlyingSpeed, MyRigid.velocity.y);
+            }
+
         }
     }
 
@@ -128,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (LastName == collision.transform.parent.name)
             {
-                myForce.relativeForce = new Vector2(myForce.relativeForce.x, -1);
+                myForce.relativeForce = new Vector2(HorizontalSpeed, -1);
                 LastName = "";
             }
         }
