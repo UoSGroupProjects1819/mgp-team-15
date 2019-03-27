@@ -1,0 +1,3 @@
+need to show the player to use r key to rotate the platform
+if you press reset before the bunny hits the spikes at the bottom then you can prevent yourself from losing a life
+main menu from gameplay doesn't allow you to select a level
