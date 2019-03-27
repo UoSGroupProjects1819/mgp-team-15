@@ -28,6 +28,8 @@ public class ResetLevel : MonoBehaviour
 
         BuildMenu.SetActive(true);
         EndMenu.SetActive(false);
+
+        SpawnScript.Timer = 0.00f;
     }
 
 }

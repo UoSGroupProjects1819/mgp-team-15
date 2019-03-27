@@ -9,6 +9,7 @@ public class Builder : MonoBehaviour
     public int[] BuildLimitsForLevel;//Limit objects for each level
     private List<int> OriginalLimitsForLevel = new List<int>();
     public GameObject[] BuildingPrefabs;//Objects build-able by player
+    public Sprite[] BuildingIcons;
 
     private int rotatecount = 0;//toggles between angles for rotatable objects
 
@@ -39,8 +40,9 @@ public class Builder : MonoBehaviour
 
             GameObject button = Instantiate(ButtonPrefab, transform.position, transform.rotation);
             button.transform.SetParent(BuildingTabPanel.transform);
-
-            button.GetComponentInChildren<Text>().text = g.name + "\n" + BuildLimitsForLevel[count] + " Remaining";
+            button.GetComponent<Image>().sprite = BuildingIcons[count];            
+            button.GetComponent<Image>().preserveAspect = true;
+            button.GetComponentInChildren<Text>().text = "x" + BuildLimitsForLevel[count];
             button.GetComponent<ButtonAction>().myID = count;
 
             buttonTexts.Add(button.GetComponentInChildren<Text>());
@@ -139,7 +141,7 @@ public class Builder : MonoBehaviour
             {
                 BuildLimitsForLevel[currentNumber]--;
                 //TODO bug where not all button are there
-                buttonTexts[currentNumber].text = BuildingPrefabs[currentNumber].name + "\n" + BuildLimitsForLevel[currentNumber] + " Remaining";
+                buttonTexts[currentNumber].text = "x" + BuildLimitsForLevel[currentNumber];
 
                 placingObject.GetComponentInChildren<ValidateBuild>().DisableValidator();
                 placingObject = null;
@@ -183,7 +185,7 @@ public class Builder : MonoBehaviour
                 count++;
                 continue;
             }
-            buttonTexts[count].text = BuildingPrefabs[count].name + "\n" + BuildLimitsForLevel[count] + " Remaining";
+            buttonTexts[count].text = "x" + BuildLimitsForLevel[count];
             count++;
         }
     }
