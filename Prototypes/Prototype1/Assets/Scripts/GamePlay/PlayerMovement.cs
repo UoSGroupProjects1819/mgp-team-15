@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
             MyRigid.AddForce(transform.TransformDirection(Vector3.up)*15, ForceMode2D.Impulse);
             r = collision.gameObject.GetComponent<SpriteFind>().r;
             StartCoroutine("Spring", collision.transform);
+            FindObjectOfType<AudioManager>().Play("BounceStraight"); // jump sound effect
         }
     }
 

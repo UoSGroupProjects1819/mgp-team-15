@@ -19,12 +19,15 @@ public class Score : MonoBehaviour
         {
             FinishLevelDisplay.SetActive(true);
             PlayerProgress.SaveProgress();
+            FindObjectOfType<AudioManager>().Play("LevelComplete"); //level complete music
+
 
             Respawn Res = GameObject.Find("MenuLogic").GetComponent<Respawn>();
 
             //Display time
             score.SetActive(true);
-            if(Res.lives < 3)
+
+            if (Res.lives < 3)
             {
                 TimeToCompleteText.text = "YOU COMPLETED IT IN " + Mathf.RoundToInt(spawnPoint.Timer) + " SECONDS!" + "\n" + "For each live lost your maximum score is reduced";
             }

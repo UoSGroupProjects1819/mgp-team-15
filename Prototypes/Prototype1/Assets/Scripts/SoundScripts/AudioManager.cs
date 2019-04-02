@@ -50,4 +50,15 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    private void Start()
+    {
+        //Play("BounceStraight");
+    }
+
+    /*public void Play (string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Play();
+    }
+    */
 }
