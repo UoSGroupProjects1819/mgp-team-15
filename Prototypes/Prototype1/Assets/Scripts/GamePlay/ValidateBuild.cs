@@ -25,6 +25,11 @@ public class ValidateBuild : MonoBehaviour
     {
         myCollider.isTrigger = true;
         myRigid.WakeUp();
+        if (other != null)
+        {
+            myCollider.enabled = true;
+            other.enabled = false;
+        }
     }
 
     //Turns it off

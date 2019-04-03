@@ -2255,6 +2255,8 @@ MonoBehaviour:
   ButtonPrefab: {fileID: 3167869594837057568, guid: 2634fa5ba4ba6c740a0c87f59cec2193,
     type: 3}
   BuildingTabPanel: {fileID: 3927178447047498437}
+  NormalCursor: {fileID: 2800000, guid: 796dc08fd0899b0499eca97bf0f094d5, type: 3}
+  RedCursor: {fileID: 2800000, guid: 514e6a10f9efc1641a2eb70486b7a9c7, type: 3}
 --- !u!1 &3927178447425545118
 GameObject:
   m_ObjectHideFlags: 0

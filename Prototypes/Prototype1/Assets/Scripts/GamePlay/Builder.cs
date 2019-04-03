@@ -21,6 +21,8 @@ public class Builder : MonoBehaviour
 
     private GameObject placingObject;//Current object being moved and placed
 
+    public Texture2D NormalCursor, RedCursor;
+
     private List<Text> buttonTexts = new List<Text>();//Values on buttons which display limits
     private bool CanBeRotated = false, placingTeleporter;
     private int BuildingCounter = 0,currentNumber;
@@ -95,9 +97,26 @@ public class Builder : MonoBehaviour
     {
         if (placingObject == null)
         {
-            //if ray over tag user object
-                //get validate build and set active
-                //placing object = that
+            if (Input.GetButtonDown("Fire1"))
+            {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+                if (hit.collider!=null)
+                {
+                    Debug.Log(hit.transform.name);
+
+                    if (hit.transform.parent)
+                    {
+                        if (hit.transform.parent.tag == "USEROBJECT")
+                        {
+                            placingObject = hit.transform.parent.gameObject;
+                            hit.transform.parent.GetComponentInChildren<ValidateBuild>().ActivateValidator();
+                            UIObjectToHide.SetActive(false);
+                            binObject.SetActive(true);
+                        }
+                    }
+                }
+            }
 
             return;
         }
@@ -162,6 +181,15 @@ public class Builder : MonoBehaviour
                 SwitchMenu();
             }
             
+        }
+
+        if (ValidateBuildCount)
+        {
+            Cursor.SetCursor(NormalCursor,Vector2.zero,CursorMode.Auto);
+        }
+        else
+        {
+            Cursor.SetCursor(RedCursor, Vector2.zero, CursorMode.Auto);
         }
     }
 
