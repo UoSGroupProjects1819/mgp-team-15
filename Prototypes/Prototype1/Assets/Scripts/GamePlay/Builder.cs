@@ -93,7 +93,14 @@ public class Builder : MonoBehaviour
 
     private void Update()
     {
-        if (placingObject == null) { return; }
+        if (placingObject == null)
+        {
+            //if ray over tag user object
+                //get validate build and set active
+                //placing object = that
+
+            return;
+        }
 
         //Rotate objects if allowed
         if (CanBeRotated)
