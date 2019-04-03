@@ -1,0 +1,10 @@
+group details>name>number>genre of game> mechanic replaced
+main menu
+options>volume
+Level select
+click to pick and click to place platform
+press start to go
+platform rotates after selection until placed
+reset button resets all platforms placed
+star system based around lives and time taken to complete level
+loss of life
