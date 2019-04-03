@@ -4047,8 +4047,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3927178448865314002}
-        m_MethodName: SpawnPlayer
+      - m_Target: {fileID: 8656217075007578476}
+        m_MethodName: TogglePlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4200,7 +4200,7 @@ PrefabInstance:
     - target: {fileID: 1252178558050810337, guid: ac00ea9b43f0ccf4b9866041de4fbb46,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.21
+      value: -18.21
       objectReference: {fileID: 0}
     - target: {fileID: 1252178558050810337, guid: ac00ea9b43f0ccf4b9866041de4fbb46,
         type: 3}
@@ -4275,7 +4275,7 @@ PrefabInstance:
     - target: {fileID: 1252178558050810337, guid: ac00ea9b43f0ccf4b9866041de4fbb46,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.5
+      value: 20.5
       objectReference: {fileID: 0}
     - target: {fileID: 1252178558050810337, guid: ac00ea9b43f0ccf4b9866041de4fbb46,
         type: 3}
@@ -4322,8 +4322,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180.00002
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1444122524661062296, guid: ac00ea9b43f0ccf4b9866041de4fbb46, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac00ea9b43f0ccf4b9866041de4fbb46, type: 3}
 --- !u!1 &339970985703796901 stripped
 GameObject:
@@ -4360,12 +4359,12 @@ PrefabInstance:
     - target: {fileID: 5555579406674556394, guid: 2b94dfa3b44a88c41a5de18c007d131e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7849956
+      value: -7.3349957
       objectReference: {fileID: 0}
     - target: {fileID: 5555579406674556394, guid: 2b94dfa3b44a88c41a5de18c007d131e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.6156309
+      value: 5.615631
       objectReference: {fileID: 0}
     - target: {fileID: 5555579406674556394, guid: 2b94dfa3b44a88c41a5de18c007d131e,
         type: 3}
@@ -4442,12 +4441,12 @@ PrefabInstance:
     - target: {fileID: 8651412178614413692, guid: a383ed8a7699fb04996c6b9196c5b002,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8651412178614413692, guid: a383ed8a7699fb04996c6b9196c5b002,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9990005
+      value: -1.0009995
       objectReference: {fileID: 0}
     - target: {fileID: 8651412178614413692, guid: a383ed8a7699fb04996c6b9196c5b002,
         type: 3}
