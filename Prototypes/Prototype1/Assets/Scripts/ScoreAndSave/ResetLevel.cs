@@ -24,7 +24,7 @@ public class ResetLevel : MonoBehaviour
         BuilderScript.ResetLimits();
 
         //Destroy player
-        Destroy(SpawnScript.SpawnedPlayer);
+        GameObject.Find("MenuLogic").GetComponent<PauseToggle>().SetToBuildMode();
 
         BuildMenu.SetActive(true);
         EndMenu.SetActive(false);

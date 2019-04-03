@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Builder : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class Builder : MonoBehaviour
     private List<int> OriginalLimitsForLevel = new List<int>();
     public GameObject[] BuildingPrefabs;//Objects build-able by player
     public Sprite[] BuildingIcons;
-
     private int rotatecount = 0;//toggles between angles for rotatable objects
 
     public GameObject UIObjectToHide, binObject, ButtonPrefab, BuildingTabPanel;
@@ -89,7 +89,7 @@ public class Builder : MonoBehaviour
     }
 
     private float SpinTimer = 0.00f;
-    private float TimeToSpin = 0.5f;
+    private float TimeToSpin = 1f;
 
     private void Update()
     {
@@ -102,7 +102,7 @@ public class Builder : MonoBehaviour
 
             if (SpinTimer>=TimeToSpin)
             {
-                int[] options = new int[] { 0, 45, -45 };
+                int[] options = new int[] { 0, 45, 0,-45 };
                 rotatecount++;
                 if (rotatecount >= options.Length) { rotatecount = 0; }
 
@@ -121,8 +121,9 @@ public class Builder : MonoBehaviour
         placingObject.transform.position = CorrectedPosition;
 
         //Place object
-        if(Input.GetButtonDown("Fire1"))
-        {
+        if(Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
+        {           
+
             if (placingTeleporter)
             {
                 if (!placingObject.GetComponentInParent<PlaceTeleporter>().FirstPlaced)
@@ -168,7 +169,16 @@ public class Builder : MonoBehaviour
     //Destroy placing object
     public void BinIt()
     {
-        Destroy(placingObject.transform.parent);
+        Debug.Log("BinObj");
+        if (placingObject.transform.parent)
+        {
+            Destroy(placingObject.transform.parent);
+        }
+        else
+        {
+            Destroy(placingObject);
+        }
+
         SwitchMenu();
     }
 

@@ -6,23 +6,47 @@ using UnityEngine.UI;
 public class PauseToggle : MonoBehaviour
 {
     //Toggles time between 0 and 1
-    private bool paused = false;
+    private bool PlayMode = false;
     public Sprite PauseIcon,PlayIcon;
     public Image PauseButtonImage;
+    public Spawn PlayerSpawn;
+    public GameObject BuildPanel;
 
-    public void TogglePause()
+    private GameObject Grid;
+
+    private void Start()
     {
-        paused = !paused;
+        Grid = GameObject.Find("Grid");
+    }
 
-        if (paused)
+    public void TogglePlay()
+    {
+        PlayMode = !PlayMode;
+
+        if (PlayMode)
         {
-            Time.timeScale = 0;
-            PauseButtonImage.sprite = PlayIcon;
+            SetToPlayMode();
         }
         else
         {
-            Time.timeScale = 1;
-            PauseButtonImage.sprite = PauseIcon;
+            SetToBuildMode();
         }
+    }
+
+    public void SetToBuildMode()
+    {
+        PlayMode = false;
+        PauseButtonImage.sprite = PlayIcon;
+        Destroy(PlayerSpawn.SpawnedPlayer);
+        Grid.SetActive(true);
+        BuildPanel.SetActive(true);
+    }
+
+    public void SetToPlayMode()
+    {
+        PlayMode = true;
+        PauseButtonImage.sprite = PauseIcon;
+        PlayerSpawn.SpawnPlayer();
+        Grid.SetActive(false);
     }
 }

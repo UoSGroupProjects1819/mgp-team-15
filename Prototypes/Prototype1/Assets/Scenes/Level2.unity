@@ -380,7 +380,7 @@ PrefabInstance:
     - target: {fileID: 238248021723037442, guid: 90b4785d273155f489493b54aad5da2e,
         type: 3}
       propertyPath: m_Name
-      value: Grid
+      value: Background
       objectReference: {fileID: 0}
     - target: {fileID: 238248021723037442, guid: 90b4785d273155f489493b54aad5da2e,
         type: 3}
