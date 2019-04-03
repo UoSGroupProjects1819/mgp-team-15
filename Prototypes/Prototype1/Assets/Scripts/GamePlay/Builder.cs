@@ -88,6 +88,9 @@ public class Builder : MonoBehaviour
         }
     }
 
+    private float SpinTimer = 0.00f;
+    private float TimeToSpin = 0.5f;
+
     private void Update()
     {
         if (placingObject == null) { return; }
@@ -95,14 +98,16 @@ public class Builder : MonoBehaviour
         //Rotate objects if allowed
         if (CanBeRotated)
         {
-            if (Input.GetButtonDown("Rotate"))
+            SpinTimer += Time.deltaTime;
+
+            if (SpinTimer>=TimeToSpin)
             {
                 int[] options = new int[] { 0, 45, -45 };
                 rotatecount++;
                 if (rotatecount >= options.Length) { rotatecount = 0; }
 
                 placingObject.transform.rotation = Quaternion.Euler(placingObject.transform.eulerAngles.x, placingObject.transform.eulerAngles.y, options[rotatecount]);
-
+                SpinTimer = 0.00f;
             }
         }
 

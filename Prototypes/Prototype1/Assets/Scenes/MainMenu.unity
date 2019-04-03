@@ -2284,7 +2284,8 @@ AudioSource:
   m_GameObject: {fileID: 834579695}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a0d16baf14488f14a820185889513b3b,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: cedc01385674b6646b2ab7f62f068f59, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3338,7 +3339,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335596937}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ee3ee4ffe03b7447a947e06e8ed4081, type: 3}
   m_Name: 
@@ -3777,7 +3778,8 @@ AudioSource:
   m_GameObject: {fileID: 1440389266}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a0d16baf14488f14a820185889513b3b,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 6cb85fe423c5cb44895322a778815f20, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -5153,7 +5155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5173,7 +5175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reset Player Level
+  m_Text: DeleteSave
 --- !u!222 &1847679624
 CanvasRenderer:
   m_ObjectHideFlags: 0

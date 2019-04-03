@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ada3014d35895c4abe7724d54648815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
+  mixerGroup: {fileID: 24300002, guid: a0d16baf14488f14a820185889513b3b, type: 2}
   sounds:
   - name: LevelFailed
     clip: {fileID: 8300000, guid: da96196e4f6dafd49bfd0b409afdd611, type: 3}

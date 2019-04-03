@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class PlayerProgress : MonoBehaviour
 {
@@ -28,5 +29,17 @@ public class PlayerProgress : MonoBehaviour
     {
         Debug.Log("Reset level");
         PlayerPrefs.SetInt("PlayerLevel", 1);
+        PlayerPrefs.DeleteAll();
+
+        var info = new DirectoryInfo(Application.persistentDataPath + "/Data");
+
+        FileInfo[] fileInfo = info.GetFiles();
+
+        foreach(FileInfo f in fileInfo)
+        {
+            f.Delete();
+        }
+
+        SceneManager.LoadSceneAsync(0);
     }
 }

@@ -23,21 +23,24 @@ public class UISizeScaler : MonoBehaviour
             //height = GetComponentInParent<RectTransform>().;
         }
 
-        childs = childSource.GetComponentsInChildren<RectTransform>();
-        if (childs != null)
+        if (childSource != null)
         {
-            List<RectTransform> Fil = new List<RectTransform>();
+            childs = childSource.GetComponentsInChildren<RectTransform>();
+            if (childs != null)
+            {
+                List<RectTransform> Fil = new List<RectTransform>();
 
-            foreach(RectTransform f in childs)
-            {
-                if (f.name.Contains("Detail"))
+                foreach (RectTransform f in childs)
                 {
-                    Fil.Add(f);
+                    if (f.name.Contains("Detail"))
+                    {
+                        Fil.Add(f);
+                    }
                 }
-            }
-            foreach (RectTransform r in Fil)
-            {
-                r.sizeDelta = new Vector2(0, (height / (float)Fil.Count));
+                foreach (RectTransform r in Fil)
+                {
+                    r.sizeDelta = new Vector2(0, (height / (float)Fil.Count));
+                }
             }
         }
         

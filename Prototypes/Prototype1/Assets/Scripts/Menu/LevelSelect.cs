@@ -36,7 +36,12 @@ public class LevelSelect : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().buildIndex != 0) { return; }
 
-        for(int c = 1; c< (SceneManager.sceneCountInBuildSettings); c++)
+        if (PlayerPrefs.GetInt("PlayerLevel") == 0)
+        {
+            PlayerPrefs.SetInt("PlayerLevel", 1);
+        }
+
+        for (int c = 1; c< (SceneManager.sceneCountInBuildSettings); c++)
         {
             GameObject spawn =Instantiate(LevelButton, transform.position, transform.rotation);
 
