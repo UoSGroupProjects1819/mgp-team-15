@@ -113,6 +113,7 @@ public class Builder : MonoBehaviour
                             hit.transform.parent.GetComponentInChildren<ValidateBuild>().ActivateValidator();
                             UIObjectToHide.SetActive(false);
                             binObject.SetActive(true);
+                            currentNumber = 900;
                         }
                     }
                 }
@@ -171,9 +172,12 @@ public class Builder : MonoBehaviour
             }
             else if (ValidateBuildCount)
             {
-                BuildLimitsForLevel[currentNumber]--;
-                //TODO bug where not all button are there
-                buttonTexts[currentNumber].text = "x" + BuildLimitsForLevel[currentNumber];
+                if (currentNumber != 900)
+                {
+                    BuildLimitsForLevel[currentNumber]--;
+                    //TODO bug where not all button are there
+                    buttonTexts[currentNumber].text = "x" + BuildLimitsForLevel[currentNumber];
+                }
 
                 placingObject.GetComponentInChildren<ValidateBuild>().DisableValidator();
                 placingObject = null;
