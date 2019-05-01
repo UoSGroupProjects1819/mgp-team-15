@@ -26,7 +26,14 @@ public class LevelSelect : MonoBehaviour
         bool PreStarted = GameObject.Find("SaveGame").GetComponent<SaveGame>().LoadSavedLevel("/" + NextlevelInt);
         if (!PreStarted)
         {
-            SceneManager.LoadSceneAsync(NextlevelInt);
+            if (NextlevelInt > SceneManager.sceneCount)
+            {
+                SceneManager.LoadSceneAsync(0);
+            }
+            else
+            {
+                SceneManager.LoadSceneAsync(NextlevelInt);
+            }
         }
 
     }

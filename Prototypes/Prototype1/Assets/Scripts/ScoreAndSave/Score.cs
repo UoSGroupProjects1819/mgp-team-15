@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
     public Text TimeToCompleteText;
     public int TimeToGetForFourStars = 15, TimeToGetForFiveStars = 10;
     public Sprite Star,BlankStar;
+    public GameObject WinScreen;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,7 +21,6 @@ public class Score : MonoBehaviour
             FinishLevelDisplay.SetActive(true);
             PlayerProgress.SaveProgress();
             FindObjectOfType<AudioManager>().Play("LevelComplete"); //level complete music
-
 
             Respawn Res = GameObject.Find("MenuLogic").GetComponent<Respawn>();
 
@@ -76,6 +76,12 @@ public class Score : MonoBehaviour
             Destroy(spawnPoint.SpawnedPlayer);
 
             spawnPoint.Timer = 0.00f;
+
+            Debug.Log(SceneManager.GetActiveScene().buildIndex + " " + SceneManager.sceneCountInBuildSettings);
+            if(SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings-1)
+            {
+                WinScreen.SetActive(true);
+            }
         }
     }
 

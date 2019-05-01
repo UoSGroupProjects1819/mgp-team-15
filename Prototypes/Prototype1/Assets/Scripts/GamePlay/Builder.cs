@@ -13,6 +13,9 @@ public class Builder : MonoBehaviour
     public Sprite[] BuildingIcons;
     private int rotatecount = 0;//toggles between angles for rotatable objects
 
+    public string[] MessageToShow;
+    public GameObject MessagePanelPrefab;
+
     public GameObject UIObjectToHide, binObject, ButtonPrefab, BuildingTabPanel;
     //UIObject to hide = Build canvas
     //binObject = UI bin button
@@ -46,6 +49,8 @@ public class Builder : MonoBehaviour
             button.GetComponent<Image>().preserveAspect = true;
             button.GetComponentInChildren<Text>().text = "x" + BuildLimitsForLevel[count];
             button.GetComponent<ButtonAction>().myID = count;
+            button.GetComponent<ButtonAction>().Message = MessageToShow[count];
+            button.GetComponent<ButtonAction>().MessageWindow = MessagePanelPrefab;
 
             buttonTexts.Add(button.GetComponentInChildren<Text>());
 
@@ -90,9 +95,6 @@ public class Builder : MonoBehaviour
         }
     }
 
-    private float SpinTimer = 0.00f;
-    private float TimeToSpin = 1f;
-
     private void Update()
     {
         if (placingObject == null)
@@ -125,16 +127,13 @@ public class Builder : MonoBehaviour
         //Rotate objects if allowed
         if (CanBeRotated)
         {
-            SpinTimer += Time.deltaTime;
-
-            if (SpinTimer>=TimeToSpin)
+            if (Input.GetButtonDown("Fire2"))
             {
                 int[] options = new int[] { 0, 45, 0,-45 };
                 rotatecount++;
                 if (rotatecount >= options.Length) { rotatecount = 0; }
 
                 placingObject.transform.rotation = Quaternion.Euler(placingObject.transform.eulerAngles.x, placingObject.transform.eulerAngles.y, options[rotatecount]);
-                SpinTimer = 0.00f;
             }
         }
 
@@ -187,13 +186,16 @@ public class Builder : MonoBehaviour
             
         }
 
-        if (ValidateBuildCount)
+        if (Application.platform != RuntimePlatform.WebGLPlayer)
         {
-            Cursor.SetCursor(NormalCursor,Vector2.zero,CursorMode.Auto);
-        }
-        else
-        {
-            Cursor.SetCursor(RedCursor, Vector2.zero, CursorMode.Auto);
+            if (ValidateBuildCount)
+            {
+                Cursor.SetCursor(NormalCursor, Vector2.zero, CursorMode.Auto);
+            }
+            else
+            {
+                Cursor.SetCursor(RedCursor, Vector2.zero, CursorMode.Auto);
+            }
         }
     }
 

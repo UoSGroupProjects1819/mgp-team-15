@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (MyRigid.velocity.x > 0)
+        if (MyRigid.velocity.x > 0 || MyRigid.velocity.x < 0)
         {
             walkToggle = true;
             //walk
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
             walkToggle = false;
             //Stand
         }
-
+        
         if (walkToggle)
         {
             timer += Time.deltaTime;
@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Spring(Transform springer)
     {
-        Debug.Log(springer.name);        
+        Debug.Log(springer.name);
 
         r.sprite = Spring2;
         yield return new WaitForSeconds(0.1f);

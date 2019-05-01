@@ -44,6 +44,6 @@ public class UISizeScaler : MonoBehaviour
             }
         }
         
-        GetComponent<RectTransform>().sizeDelta = new Vector2(0, height);
+        GetComponent<RectTransform>().sizeDelta = new Vector2(GetComponent<RectTransform>().sizeDelta.x, height);
     }
 }

@@ -1,0 +1,13 @@
+{
+"companyName": "Group15",
+"productName": "BunnyCraft",
+"dataUrl": "WebBuild2.data.unityweb",
+"wasmCodeUrl": "WebBuild2.wasm.code.unityweb",
+"wasmFrameworkUrl": "WebBuild2.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"}
+}
