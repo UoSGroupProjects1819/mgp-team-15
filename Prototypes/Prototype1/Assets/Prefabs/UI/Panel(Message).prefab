@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 3932711509378171449}
   - component: {fileID: 7611088214473337932}
   - component: {fileID: 8111876775852645126}
+  - component: {fileID: 537095888298387807}
   m_Layer: 5
   m_Name: Panel(Message)
   m_TagString: Untagged
@@ -171,3 +172,15 @@ MonoBehaviour:
   Override: {fileID: 0}
   childSource: {fileID: 0}
   childs: []
+--- !u!114 &537095888298387807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996923218596552566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca556a0d821f3c742bf4b67454dd0660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

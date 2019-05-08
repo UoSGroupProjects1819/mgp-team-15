@@ -22,7 +22,7 @@ public class ButtonAction : MonoBehaviour
         {
             return;
         }
-
+        Debug.Log("MESSSAGER ON");
         spawn = Instantiate(MessageWindow);
         spawn.transform.SetParent(transform.parent.transform.parent.transform);
         spawn.GetComponentInChildren<Text>().text = Message;
@@ -35,6 +35,7 @@ public class ButtonAction : MonoBehaviour
         if(spawn == null) { return; }
         else
         {
+            Debug.Log("MESSSAGER OFF");
             Destroy(spawn);
         }
     }
